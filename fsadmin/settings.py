@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.gis',
     'rest_framework',
     'rest_framework_gis',
-    'rigolets',
+    'rigolets.apps.RigoletsConfig',
     'api.apps.ApiConfig',
     'corsheaders',
 ]
@@ -65,7 +65,7 @@ MIDDLEWARE = [
 
 CORS_ORIGIN_ALLOW_ALL = True
 
-ROOT_URLCONF = 'fishingspots.urls'
+ROOT_URLCONF = 'fsadmin.urls'
 
 TEMPLATES = [
     {
@@ -83,7 +83,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'fishingspots.wsgi.application'
+WSGI_APPLICATION = 'fsadmin.wsgi.application'
 
 
 # Database

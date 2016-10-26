@@ -4,7 +4,7 @@ from django.http import HttpResponse
 from django.template import loader
 from .models import RigoletsLayer
 from rest_framework import viewsets, response
-from rigolets.serializers import UserSerializer, GroupSerializer, RigoletsSerializer, MapSerializer
+from .serializers import UserSerializer, GroupSerializer, RigoletsSerializer, MapSerializer
 from django.core import serializers
 import json
 
@@ -25,4 +25,4 @@ def ol_map (request):
 		points.append(feat)
 	context = { 'request' : request }
 
-	return render(request, "rigolets/openlayers.html", {'data_points' : points })
+	return render(request, "rigolets/openlayers.html", {'data_points' : serializer_class })

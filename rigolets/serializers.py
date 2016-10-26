@@ -1,5 +1,5 @@
 from django.contrib.auth.models import User, Group
-from rigolets.models import RigoletsLayer
+from .models import RigoletsLayer
 from rest_framework import serializers
 from rest_framework_gis.serializers import GeoFeatureModelSerializer
 
