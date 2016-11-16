@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{{ datasources }}
+
+{% for source in datasources %}
+<h3>{{ source.name }}</h3>
+<ul>
+    <li>{{ source.id }}</li>
+    <li><a href="{{ source.request_url }}" target="_blank">{{ source.request_url }}</a></li>
+    <li><a href="{{ source.reference_url }}" target="_blank">API Reference</a></li>
+</ul>
+{% endfor %}
+
+</body>
+</html>

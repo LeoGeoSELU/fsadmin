@@ -10,19 +10,19 @@ import json
 
 # Create your views here.
 def index (request):
-	template = loader.get_template('rigolets/index.html')
-	return HttpResponse(template.render(request))
+    template = loader.get_template('rigolets/index.html')
+    return HttpResponse(template.render(request))
 
 def about (request):
-	template = loader.get_template('rigolets/about.html')
-	return HttpResponse(template.render(request))
+    template = loader.get_template('rigolets/about.html')
+    return HttpResponse(template.render(request))
 
 def ol_map (request):
-	data_points =  RigoletsLayer.objects.all()
-	serializer_class = MapSerializer(data_points, many=True)
-	points = []
-	for feat in serializer_class.data['features']:
-		points.append(feat)
-	context = { 'request' : request }
+    data_points = RigoletsLayer.objects.all()
+    serializer_class = MapSerializer(data_points, many=True)
+    points = []
+    for feat in serializer_class.data['features']:
+        points.append(feat)
+    context = { 'request' : request }
 
-	return render(request, "rigolets/openlayers.html", {'data_points' : serializer_class })
+    return render(request, "rigolets/openlayers.html", {'data_points' : serializer_class })

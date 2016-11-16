@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<ul>
+    {% for x in callresponse.value.timeSeries %}
+    <li>{{ x.sourceInfo.siteName }}</li>
+    <li>{{ x.sourceInfo.geoLocation }}</li>
+    <li>{{ x.variable.variableDescription }}</li>
+        {% for y in x.values %}
+        <li>{{ y }}</li>
+        {% endfor %}
+    {% endfor %}
+</ul>
+
+<ul>
+    {% for x, y in callresponse.value.timeSeries.variable %}
+    <li>{{ x }}, {{ y }}</li>
+    {% endfor %}
+</ul>
+
+</body>
+</html>

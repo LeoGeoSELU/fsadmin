@@ -1,23 +1,31 @@
 from django.contrib.gis.db import models
 
+
 class BaseScore(models.Model):
-	name = models.CharField(max_length=50, blank=True)
-	geom = models.PointField(blank=True)
-	score = models.FloatField(blank=True)
+    name = models.CharField(max_length=50, blank=True)
+    geom = models.PointField(blank=True)
+    score = models.FloatField(blank=True)
 
-	def __str__(self):
-		return self.name
+    def __str__(self):
+        return self.name
 
-# class DataSource(models.Model):
-# 	"""docstring for DataSource"""
-# 	name = models.CharField("Data Source", blank=True, max_length=50)
-# 	base_url = models.CharField("Base Url", blank=True, max_length=100)
-# 	query_string = models.CharField("Query String", blank=True, max_length=255)
-# 	access_token = models.CharField("Access Token", blank=True, max_length=100)
-# 	request_url = models.CharField("Request URL", max_length=500)
-#
-# 	def __str__(self):
-# 		return self.request_url
+
+class DataSource(models.Model):
+    """docstring for DataSource"""
+    name = models.CharField("Data Source", blank=True, max_length=50)
+    base_url = models.URLField("Base Url", blank=True, max_length=255)
+    query_string = models.CharField("Query String", blank=True, max_length=255)
+    access_token = models.CharField("Access Token", blank=True, max_length=255)
+    response_format = models.CharField("Response Format", blank=True, max_length=30)
+    request_url = models.URLField("Request URL", blank=True, max_length=500)
+    reference_url = models.URLField(blank=True)
+
+    def save(self, *args, **kwargs):
+        self.request_url = self.base_url + self.query_string + self.response_format + self.access_token
+        super(DataSource, self).save(*args, **kwargs)
+
+    def __str__(self):
+        return self.name
 
 # area = models.IntegerField(blank=True)
 # lon = models.FloatField()
