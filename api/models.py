@@ -27,6 +27,12 @@ class DataSource(models.Model):
     def __str__(self):
         return self.name
 
+
+class USGSResponse(models.Model):
+    location_param = models.CharField(blank=True, max_length=50)
+    name = models.CharField(blank=True, max_length=255)
+    geo_point = models.PointField(blank=True)
+
 # area = models.IntegerField(blank=True)
 # lon = models.FloatField()
 # lat = models.FloatField()

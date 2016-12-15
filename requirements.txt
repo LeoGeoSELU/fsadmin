@@ -9,3 +9,4 @@ django-cors-headers
 requests
 python-dateutil
 plotly
+django-bootstrap3

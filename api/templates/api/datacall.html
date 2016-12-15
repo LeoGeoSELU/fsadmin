@@ -9,7 +9,7 @@
 <ul>
     {% for x in callresponse.value.timeSeries %}
     <li>{{ x.sourceInfo.siteName }}</li>
-    <li>{{ x.sourceInfo.geoLocation }}</li>
+    <li>{{ x.sourceInfo.geoLocation.geogLocation }}</li>
     <li>{{ x.variable.variableDescription }}</li>
         {% for y in x.values %}
         <li>{{ y }}</li>

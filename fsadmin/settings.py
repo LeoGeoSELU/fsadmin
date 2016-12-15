@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'rigolets.apps.RigoletsConfig',
     'api.apps.ApiConfig',
     'corsheaders',
+    'bootstrap3',
 ]
 
 REST_FRAMEWORK = {

@@ -1,0 +1,38 @@
+{% extends "api/base.html" %}
+{% block title %}API Response{% endblock %}
+
+{% block content %}
+<div class="col-md-8 col-md-offset-2">
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th><h1>{{ callresponse.name }}</h1>Latitude: {{ callresponse.geolocation.latitude }}, Longitude: {{ callresponse.geolocation.longitude }}</th><th>&nbsp;</th>
+        </tr>
+
+    </thead>
+    <tbody>
+
+    {% for k, v in callresponse.data.items %}
+    <tr><th>{{ k }}</th><th>&nbsp;</th></tr>
+    {% for x in v %}
+        {% if forloop.first %}
+        <tr><th>{{ x.description }}</th><th>&nbsp;</th></tr>
+        <tr><th>Item</th><th>{{ x.unit }}</th>
+        {% else %}
+        <tr><td><h3>Value:</h3></td><td>{{ x.value }}</td></tr>
+        <tr><td><h3>Datetime:</h3></td><td>{{ x.datetime }}</td></tr>
+        {% endif %}
+    {% endfor %}
+
+
+    {% endfor %}
+
+    </tbody>
+</table>
+
+</div>
+
+
+{% endblock %}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.bundle.min.js"></script>

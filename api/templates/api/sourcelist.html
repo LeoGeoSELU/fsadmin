@@ -1,20 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-{{ datasources }}
+{% extends "api/base.html" %}
 
-{% for source in datasources %}
-<h3>{{ source.name }}</h3>
-<ul>
-    <li>{{ source.id }}</li>
-    <li><a href="{{ source.request_url }}" target="_blank">{{ source.request_url }}</a></li>
-    <li><a href="{{ source.reference_url }}" target="_blank">API Reference</a></li>
-</ul>
-{% endfor %}
+{% block title %}Source List{% endblock %}
 
-</body>
-</html>
+{% block content %}
+
+
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Source name</th>
+            <th>API</th>
+            <th>Reference</th>
+        </tr>
+    </thead>
+    <tbody>
+
+    {% for source in datasources %}
+        <tr>
+            <td>{{ source.id }}</td>
+            <td>{{ source.name }}</td>
+            <td><a href="{{ source.request_url }}" target="_blank">{{ source.request_url }}</a></td>
+            <td><a href="{{ source.reference_url }}" target="_blank">{{ source.reference_url }}</a></td>
+            <td><a class="btn btn-default" role="button" href="/api/response/{{ source.id }}" target="_blank">Send Request</a></td>
+        </tr>
+    {% endfor %}
+
+    </tbody>
+
+</table>
+
+</div>
+
+{% endblock %}

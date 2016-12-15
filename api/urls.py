@@ -9,6 +9,7 @@ router.register(r'basescore', views.BaseScoreViewSet)
 urlpatterns = [
     url(r'^sourcelist/$', views.datalist, name="sourcelist"),
     url(r'^sourcelist/(?P<source_id>[0-9]+)$', views.datacall, name="datacall"),
+    url(r'^response/(?P<source_id>[0-9]+)$', views.response, name="response"),
     url(r'^', include(router.urls)),
 ]
 
